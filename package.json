@@ -1,0 +1,22 @@
+{
+  "name": "goit-advancedjs-hw-02",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=/goit-advancedjs-hw-02/",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "flatpickr": "^4.6.13",
+    "glob": "^13.0.6",
+    "izitoast": "^1.4.0",
+    "modern-normalize": "^3.0.1",
+    "postcss": "^8.5.15",
+    "postcss-sort-media-queries": "^6.6.1",
+    "vite": "^8.0.12",
+    "vite-plugin-full-reload": "^1.2.0",
+    "vite-plugin-html-inject": "^1.1.2"
+  }
+}
