@@ -9,13 +9,6 @@ export const getImagesByQuery = searchedQuery => {
     safesearch: 'true',
   });
 
-  // return fetch(`https://pixabay.com/api/?${requestParams}`).then(response => {
-  //   if (!response.ok) {
-  //     throw new Error(response.status);
-  //   }
-  //   return response.json();
-  // });
-
   return axios.get('https://pixabay.com/api/', { params: requestParams }).then(response => response.data);
 };
 

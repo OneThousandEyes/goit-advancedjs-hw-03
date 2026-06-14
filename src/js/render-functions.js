@@ -1,10 +1,21 @@
-import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm';
+import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm.js';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const createGallery = imgData => {
-  return `
+const lightboxOptions = {
+  captionsData: 'alt',
+  captionDelay: 250,
+};
+
+let lightbox = null;
+
+const createGallery = images => {
+  const markup = images
+    .map(
+      imgData => `
     <li class="gallery-card">
-      <img class="gallery-img" src="${imgData.webformatURL}" alt="${imgData.tags}" />
+      <a class="gallery-link" href="${imgData.largeImageURL}">
+        <img class="gallery-img" src="${imgData.webformatURL}" alt="${imgData.tags}" />
+      </a>
       <div class="gallery-stats">
         <div class="stat-item">
           <span class="stat-label">Likes</span>
@@ -24,7 +35,13 @@ const createGallery = imgData => {
         </div>
       </div>
     </li>
-  `;
+  `
+    )
+    .join('');
+
+  refs.galleryList.insertAdjacentHTML('beforeend', markup);
+
+  lightbox = new SimpleLightbox('.gallery-link', lightboxOptions);
 };
 
 const refs = {
@@ -33,6 +50,11 @@ const refs = {
 };
 
 const clearGallery = () => {
+  if (lightbox) {
+    lightbox.destroy();
+    lightbox = null;
+  }
+
   refs.galleryList.innerHTML = '';
 };
 
@@ -43,10 +65,5 @@ const showLoader = () => {
 const hideLoader = () => {
   refs.preloader.classList.remove('is-active');
 };
-
-const lightbox = new SimpleLightbox('.gallery-link', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
 
 export { createGallery, clearGallery, showLoader, hideLoader };
