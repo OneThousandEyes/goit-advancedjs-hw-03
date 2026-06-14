@@ -41,7 +41,11 @@ const createGallery = images => {
 
   refs.galleryList.insertAdjacentHTML('beforeend', markup);
 
-  lightbox = new SimpleLightbox('.gallery-link', lightboxOptions);
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery-link', lightboxOptions);
+  } else {
+    lightbox.refresh();
+  }
 };
 
 const refs = {
