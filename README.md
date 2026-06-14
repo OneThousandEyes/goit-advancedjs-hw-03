@@ -1,3 +1,3 @@
-# goit-advancedjs-hw-02
+# goit-advancedjs-hw-03
 
-Тема 4. Асинхронний JavaScript і проміси.
+Тема 6. HTTP-запити і взаємодія з бекендом.
